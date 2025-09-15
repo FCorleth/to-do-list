@@ -45,6 +45,7 @@ export function InputTask({
         onClick={handleCreateNewTask}
         text="Criar"
         icon={plusIcon}
+        disabled={taskValue.length === 0}
         style={{
           display: "flex",
           alignItems: "center",
