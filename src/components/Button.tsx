@@ -1,22 +1,18 @@
-import plusIcon from "../assets/plus-icon.svg";
+type ButtonProps = {
+  text?: string;
+  icon?: string;
+  style?: React.CSSProperties;
+};
 
-export function Button() {
+export function Button({ text, icon, style }: ButtonProps) {
   return (
     <button
       style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "0.5rem",
-        padding: "1rem",
-        backgroundColor: "var(--blue-200)",
-        border: "none",
-        borderRadius: "8px",
-        color: "var(--gray-100)",
-        cursor: "pointer",
+        ...style,
       }}
     >
-      <p style={{ fontWeight: 700 }}>Criar</p>
-      <img src={plusIcon} />
+      <p>{text}</p>
+      <img src={icon} alt="" />
     </button>
   );
 }

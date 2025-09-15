@@ -8,6 +8,7 @@ export function Content() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        gap: "4rem",
       }}
     >
       <InputTask />

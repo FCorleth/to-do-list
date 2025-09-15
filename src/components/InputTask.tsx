@@ -1,4 +1,5 @@
 import { Button } from "./Button";
+import plusIcon from "../assets/plus-icon.svg";
 
 export function InputTask() {
   return (
@@ -22,7 +23,21 @@ export function InputTask() {
           width: "100%",
         }}
       />
-      <Button />
+      <Button
+        text="Criar"
+        icon={plusIcon}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5rem",
+          padding: "1rem",
+          backgroundColor: "var(--blue-200)",
+          border: "none",
+          borderRadius: "8px",
+          color: "var(--gray-100)",
+          cursor: "pointer",
+        }}
+      />
     </div>
   );
 }
