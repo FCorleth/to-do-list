@@ -1,7 +1,4 @@
-import { NotTask } from "./NotTask";
-import { TaskItem } from "./TaskItem";
-
-export function Task() {
+export function TaskHeader() {
   return (
     <div style={{ width: "46rem" }}>
       <header style={{ display: "flex", justifyContent: "space-between" }}>
@@ -51,8 +48,6 @@ export function Task() {
           </span>
         </div>
       </header>
-      {/*<NotTask />*/}
-      <TaskItem />
     </div>
   );
 }

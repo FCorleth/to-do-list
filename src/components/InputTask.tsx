@@ -1,7 +1,23 @@
+import { useState } from "react";
 import { Button } from "./Button";
 import plusIcon from "../assets/plus-icon.svg";
 
-export function InputTask() {
+export function InputTask({
+  createTask,
+}: {
+  createTask: (task: string) => void;
+}) {
+  const [taskValue, setTaskValue] = useState("");
+
+  function handleTaskValue(event: React.ChangeEvent<HTMLInputElement>) {
+    setTaskValue(event.target.value);
+  }
+
+  function handleCreateNewTask() {
+    createTask(taskValue);
+    setTaskValue("");
+  }
+
   return (
     <div
       style={{
@@ -12,6 +28,8 @@ export function InputTask() {
       }}
     >
       <input
+        value={taskValue}
+        onChange={handleTaskValue}
         type="text"
         placeholder="Adicionar uma nova tarefa"
         style={{
@@ -24,6 +42,7 @@ export function InputTask() {
         }}
       />
       <Button
+        onClick={handleCreateNewTask}
         text="Criar"
         icon={plusIcon}
         style={{

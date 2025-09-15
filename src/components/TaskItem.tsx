@@ -2,7 +2,13 @@ import { Button } from "./Button";
 import { CompleteTask } from "./CompleteTask";
 import trashIcon from "../assets/trash-icon.svg";
 
-export function TaskItem() {
+type TaskItemProps = {
+  key: number;
+  content: string;
+  isCompleted: boolean;
+};
+
+export function TaskItem({ content, isCompleted }: TaskItemProps) {
   return (
     <div
       style={{
@@ -17,8 +23,8 @@ export function TaskItem() {
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: "0.875rem" }}>
-        <CompleteTask />
-        <p style={{ fontSize: "0.875rem" }}>Descrição da tarefa</p>
+        <CompleteTask isCompleted={isCompleted} />
+        <p style={{ fontSize: "0.875rem" }}>{content}</p>
       </div>
 
       <Button
