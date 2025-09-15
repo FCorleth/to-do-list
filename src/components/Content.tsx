@@ -27,6 +27,9 @@ const Tasks: TaskType[] = [
 export function Content() {
   const [task, setTask] = useState(Tasks);
 
+  const taskQuantity = task.length;
+  const taskCompleted = task.filter((t) => t.isCompleted).length;
+
   function createTask(taskValue: string) {
     const newTask: TaskType = {
       id: Math.random(),
@@ -34,6 +37,11 @@ export function Content() {
       isCompleted: false,
     };
     setTask([...task, newTask]);
+  }
+
+  function deleteTask(taskId: number) {
+    const tasksWithoutDeletedOne = task.filter((t) => t.id !== taskId);
+    setTask(tasksWithoutDeletedOne);
   }
 
   return (
@@ -47,14 +55,16 @@ export function Content() {
     >
       <InputTask createTask={createTask} />
       <div>
-        <TaskHeader />
+        <TaskHeader taskQuantity={taskQuantity} taskCompleted={taskCompleted} />
         {task.length === 0 && <NotTask />}
         {task.map((t) => {
           return (
             <TaskItem
               key={t.id}
+              id={t.id}
               content={t.content}
               isCompleted={t.isCompleted}
+              deleteTask={deleteTask}
             />
           );
         })}

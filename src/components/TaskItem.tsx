@@ -3,12 +3,22 @@ import { CompleteTask } from "./CompleteTask";
 import trashIcon from "../assets/trash-icon.svg";
 
 type TaskItemProps = {
-  key: number;
+  id: number;
   content: string;
   isCompleted: boolean;
+  deleteTask: (taskId: number) => void;
 };
 
-export function TaskItem({ content, isCompleted }: TaskItemProps) {
+export function TaskItem({
+  id,
+  content,
+  isCompleted,
+  deleteTask,
+}: TaskItemProps) {
+  function handleDeleteTask() {
+    deleteTask(id);
+  }
+
   return (
     <div
       style={{
@@ -28,6 +38,7 @@ export function TaskItem({ content, isCompleted }: TaskItemProps) {
       </div>
 
       <Button
+        onClick={handleDeleteTask}
         icon={trashIcon}
         style={{ backgroundColor: "var(--gray-500)", border: "none" }}
       />

@@ -1,4 +1,9 @@
-export function TaskHeader() {
+type TaskHeaderProps = {
+  taskQuantity: number;
+  taskCompleted: number;
+};
+
+export function TaskHeader({ taskQuantity, taskCompleted }: TaskHeaderProps) {
   return (
     <div style={{ width: "46rem" }}>
       <header style={{ display: "flex", justifyContent: "space-between" }}>
@@ -21,7 +26,7 @@ export function TaskHeader() {
               borderRadius: "100px",
             }}
           >
-            0
+            {taskQuantity}
           </span>
         </div>
         <div
@@ -44,7 +49,7 @@ export function TaskHeader() {
               borderRadius: "100px",
             }}
           >
-            0 de 25
+            {taskCompleted} de {taskQuantity}
           </span>
         </div>
       </header>
