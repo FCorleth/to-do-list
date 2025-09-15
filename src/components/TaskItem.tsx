@@ -7,6 +7,7 @@ type TaskItemProps = {
   content: string;
   isCompleted: boolean;
   deleteTask: (taskId: number) => void;
+  completeTask: (taskId: number) => void;
 };
 
 export function TaskItem({
@@ -14,6 +15,7 @@ export function TaskItem({
   content,
   isCompleted,
   deleteTask,
+  completeTask,
 }: TaskItemProps) {
   function handleDeleteTask() {
     deleteTask(id);
@@ -33,8 +35,19 @@ export function TaskItem({
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: "0.875rem" }}>
-        <CompleteTask isCompleted={isCompleted} />
-        <p style={{ fontSize: "0.875rem" }}>{content}</p>
+        <CompleteTask
+          isCompleted={isCompleted}
+          completeTask={completeTask}
+          id={id}
+        />
+        <p
+          style={{
+            fontSize: "0.875rem",
+            textDecoration: isCompleted ? "line-through" : "none",
+          }}
+        >
+          {content}
+        </p>
       </div>
 
       <Button

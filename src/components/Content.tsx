@@ -44,6 +44,16 @@ export function Content() {
     setTask(tasksWithoutDeletedOne);
   }
 
+  function completeTask(taskId: number) {
+    const updatedTasks = task.map((t) => {
+      if (t.id === taskId) {
+        return { ...t, isCompleted: !t.isCompleted };
+      }
+      return t;
+    });
+    setTask(updatedTasks);
+  }
+
   return (
     <div
       style={{
@@ -65,6 +75,7 @@ export function Content() {
               content={t.content}
               isCompleted={t.isCompleted}
               deleteTask={deleteTask}
+              completeTask={completeTask}
             />
           );
         })}
